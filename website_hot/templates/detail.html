@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ article.title }}</title>
+</head>
+<body>
+    {{ article.title }}
+    <p id="show-content">{{ article.description|slice:'12' }}...显示全部</p>
+    <p id="hide-content" style="display:none">{{ article.description }}</p>
+    <hr>
+    {{ article.answer|safe }}
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#show-content").click(function(){
+            $("#show-content").hide();
+            $("#hide-content").show();
+        });
+    });
+</script>
+</body>
+</html>
