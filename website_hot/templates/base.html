@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ToDoList</title>
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+</head>
+
+<body>
+<nav class="navbar navbar-default center-block">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+
+
+        </div>
+    </div>
+</nav>
+<div class="container">
+            {% if messages %}
+                {% for message in messages %}
+            <div class="alert {%if message.tags %} alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="alert alert-info" role="alert" style="margin:30px 0px 0px 0px;">知乎热门</div>
+            {% for article in articles %}
+            <b>{{ article.title }}</b>
+            <br>
+                {{ article.description|slice:'12'  }}
+            <br>
+
+            {% endfor %}
+        </div>
+        <div class="col-md-4">
+            <div class="alert alert-warning" role="alert" style="margin:30px 0px 0px 0px;">微博热门</div>
+            <ul class="list-group">
+
+
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <div class="alert alert-success" role="alert" style="margin:30px 0px 0px 0px;"></div>
+
+            <ul class="list-group">
+
+
+            </ul>
+        </div>
+
+</div>
+
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".hide-content").click(function(){
+            $(".hide-content").hide();
+            $(".show-content").show();
+        });
+    });
+</script>
+</body>
+</html>
